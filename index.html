@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#11151d">
+<title>CHIGI MODS — Apps & Games</title>
+<style>
+:root{--bg:#11151d;--panel:#202633;--panel2:#272e3b;--green:#8bb51d;--blue:#0796d2;--text:#f4f6fa;--muted:#aeb7c5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 Arial,Helvetica,sans-serif;padding-bottom:74px}
+header{position:sticky;top:0;z-index:5;background:#10141b;border-bottom:1px solid #38421f;padding:12px 14px;display:flex;align-items:center;gap:12px}
+.logo{font-weight:900;font-style:italic;color:var(--green);font-size:20px;letter-spacing:-.7px;white-space:nowrap}.spacer{flex:1}
+.iconbtn{border:0;background:transparent;color:white;font-size:23px;padding:2px 4px;cursor:pointer}
+.switch{width:38px;height:20px;border-radius:20px;background:var(--green);position:relative;display:inline-block}.switch:after{content:"";position:absolute;right:3px;top:3px;width:14px;height:14px;border-radius:50%;background:#11151d}
+.searchwrap{padding:10px 12px;background:#171c25}.searchwrap input{width:100%;padding:12px 14px;border-radius:24px;border:1px solid #394150;background:#282f3b;color:white;outline:none}
+.chips{display:flex;gap:8px;overflow:auto;padding:10px 12px}.chip{border:0;border-radius:20px;padding:8px 15px;background:#29313e;color:white;white-space:nowrap;cursor:pointer}.chip.active{background:var(--green);color:#10140d}
+.hero{margin:8px 12px 16px;background:linear-gradient(130deg,#172b27,#233d16 55%,#11151d);border-radius:12px;padding:20px 16px;border:1px solid #35452a}.hero small{color:#c6ed72}.hero h1{font-size:24px;margin:8px 0}.hero p{color:#c0c9d5;margin:0 0 14px}.btn{border:0;border-radius:6px;padding:11px 13px;font-weight:bold;cursor:pointer;text-decoration:none;display:inline-block;text-align:center}.green{background:var(--green);color:#10140d}.blue{background:#168fe0;color:white}.red{background:#cf3038;color:white}
+.section-title{font-size:18px;margin:18px 13px 10px;font-weight:800}.section-title span{color:var(--green)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:0 10px}.card{background:var(--panel);border-radius:12px;padding:10px;position:relative;overflow:hidden;border:1px solid #2b3340;cursor:pointer}.appicon{height:95px;border-radius:12px;background:#151a23;display:flex;align-items:center;justify-content:center;font-size:39px;font-weight:bold;margin-bottom:8px}.ribbon{position:absolute;top:13px;left:-24px;transform:rotate(-38deg);background:var(--green);color:#10140d;font-size:9px;font-weight:900;padding:4px 27px}.card h3{font-size:13px;margin:5px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.meta{color:var(--muted);font-size:11px}.stars{color:#ffd54f;margin-top:4px}.tag{display:inline-block;background:#344d16;color:#bce56a;font-size:10px;border-radius:4px;padding:2px 5px;margin-right:4px}
+.page{display:none;padding:0 12px}.page.active{display:block}.detail-head{background:var(--panel);padding:16px;border-radius:12px;margin:12px 0}.detail-head h1{font-size:22px;margin:12px 0}.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.btnrow .btn{flex:1;min-width:125px}.info{background:var(--panel);border-radius:10px;padding:12px;margin:12px 0}.info-row{display:flex;justify-content:space-between;border-bottom:1px solid #353d4b;padding:9px 0;gap:15px}.info-row:last-child{border:0}.muted{color:var(--muted)}.notice{background:#2a303c;border-radius:10px;padding:14px;margin:14px 0}.downloadpill{display:block;background:#789e18;color:#10140d;border-radius:22px;text-decoration:none;font-weight:bold;padding:12px;margin:12px 0;text-align:center}.bottomnav{position:fixed;bottom:0;left:0;right:0;z-index:8;display:flex;justify-content:space-around;background:#11151d;border-top:1px solid #465323;padding:8px 4px 7px}.bottomnav button{background:transparent;color:#c4ccd8;border:0;font-size:11px;min-width:54px;cursor:pointer}.bottomnav button b{display:block;font-size:20px;margin-bottom:2px}.bottomnav button.active{color:white}.bottomnav button.active b{color:var(--green)}footer{text-align:center;color:#8f99a9;font-size:11px;padding:25px 12px}
+.menu{display:none;position:absolute;right:12px;top:54px;background:#272e3b;border:1px solid #444d5c;border-radius:9px;padding:8px;min-width:150px}.menu.open{display:block}.menu button{display:block;width:100%;text-align:left;padding:10px;background:transparent;border:0;color:white}
+@media(min-width:700px){body{max-width:980px;margin:auto}.grid{grid-template-columns:repeat(4,minmax(0,1fr))}.hero{padding:28px}.appicon{height:120px}}
+</style>
+</head>
+<body>
+<header><div class="logo">CHIGI MODS</div><div class="spacer"></div><span class="switch" aria-label="theme indicator"></span><button class="iconbtn" id="menuBtn" aria-label="Menu">☰</button>
+<div class="menu" id="menu"><button onclick="showPage('home')">Home</button><button onclick="showPage('apps')">Apps</button><button onclick="showPage('games')">Games</button><button onclick="showPage('about')">About CHIGI MODS</button></div></header>
+<div class="searchwrap"><input id="search" placeholder="🔎  Search apps and games..." aria-label="Search apps and games"></div>
+<div class="chips"><button class="chip active" data-filter="all">All</button><button class="chip" data-filter="apps">Apps</button><button class="chip" data-filter="games">Games</button><button class="chip" data-filter="updated">Recently Updated</button></div>
+<main id="homePage" class="page active">
+<section class="hero"><small>WELCOME TO CHIGI MODS</small><h1>Apps & Games Hub</h1><p>Discover app information, versions, and official download links in one place.</p><button class="btn green" onclick="showPage('apps')">EXPLORE APPS</button></section>
+<h2 class="section-title">🔥 Trending</h2><div class="grid" id="trending"></div>
+<h2 class="section-title">Recently <span>Updated</span></h2><div class="grid" id="recent"></div>
+</main>
+<main id="appsPage" class="page"><h2 class="section-title">All Apps</h2><div class="grid" id="appsGrid"></div></main>
+<main id="gamesPage" class="page"><h2 class="section-title">Games</h2><div class="grid" id="gamesGrid"></div></main>
+<main id="detailPage" class="page"><button class="btn green" onclick="showPage('home')">← BACK</button><div id="detail"></div></main>
+<main id="downloadPage" class="page"><button class="btn green" onclick="showPage('detail')">← BACK</button><div class="detail-head"><h1 id="downloadTitle">Download</h1><p class="muted">Use only files you own or are authorized to distribute.</p></div><h2 class="section-title">Download links</h2><a class="downloadpill" id="downloadLink" href="#" rel="noopener">⬇ Download APK / App</a><p class="muted">If the link is not set yet, edit the app entry in <b>script.js</b>.</p><div class="notice"><b>⚠️ Safety reminder</b><p>Install apps only from sources you trust. Check permissions and scan files before installing.</p></div></main>
+<main id="aboutPage" class="page"><h2 class="section-title">About CHIGI MODS</h2><div class="info"><p>CHIGI MODS is an independent app information website. App names and icons are for identification. Add your contact and policy details here.</p><p class="muted">Only publish apps and files you have permission to distribute.</p></div></main>
+<footer>© <span id="year"></span> CHIGI MODS · Independent app directory</footer>
+<nav class="bottomnav"><button class="active" data-page="home"><b>⌂</b>Home</button><button data-page="apps"><b>♟</b>Apps</button><button data-page="games"><b>🎮</b>Games</button><button data-page="about"><b>☏</b>Join / About</button></nav>
+<script src="script.js"></script>
+</body></html>
