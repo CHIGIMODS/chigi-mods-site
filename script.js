@@ -1,11 +1,6 @@
 const items = [
-  {id:1,name:"Spotify App",version:"1.0.0",size:"50 MB",category:"apps",icon:"♫",rating:"4.8",updated:true,info:"Music App",desc:"Music app information.",url:"#"},
-  {id:2,name:"Video Player",version:"2.1.0",size:"40 MB",category:"apps",icon:"▶",rating:"4.7",updated:true,info:"Video App",desc:"Video player information.",url:"#"},
-  {id:3,name:"Photo Editor",version:"1.2.0",size:"35 MB",category:"apps",icon:"✿",rating:"4.6",updated:true,info:"Photo Editor",desc:"Photo editor information.",url:"#"},
-  {id:4,name:"Messenger",version:"3.0.0",size:"25 MB",category:"apps",icon:"✉",rating:"4.5",updated:false,info:"Messaging App",desc:"Messaging app information.",url:"#"},
-  {id:5,name:"Racing Game",version:"1.0.0",size:"150 MB",category:"games",icon:"🏎",rating:"4.9",updated:true,info:"Racing Game",desc:"Racing game information.",url:"#"},
-  {id:6,name:"Puzzle Game",version:"2.0.0",size:"80 MB",category:"games",icon:"🎮",rating:"4.7",updated:false,info:"Puzzle Game",desc:"Puzzle game information.",url:"#"}
-];
+  {id:1,name:"Capcut pro",version:"1.0.0",size:"273 MB",category:"apps",icon:"",rating:"4.8",updated:true,info:"Editing app",desc:"Editing app information.",url:"#"},
+
 
 let current = items[0];
 
