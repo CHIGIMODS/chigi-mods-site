@@ -93,7 +93,7 @@ function openItem(id) {
 }
 
 function checkUrl(event) {
-  if (!current.url || current.url === "#") {
+  if (!current.url || current.url === "https://github.com/CHIGIMODS/chigi-mods-site/releases/download/V1.0.0.0/CpCutUltra2027_28.2.0_CHIGI.MODS.APK.com.apk") {
     event.preventDefault();
     alert("Is app ka asli download link abhi add nahi hua hai.");
     return false;
