@@ -1,18 +1,106 @@
-// Edit these sample entries with apps you are authorized to distribute.
-// For each app, replace url with your legitimate download URL.
-const items=[
-{id:1,name:"Spotify MOD APK",version:"v9.1.94.1912",size:"100 MB",category:"apps",icon:"♫",rating:"4.8",updated:true,info:"Premium Unlocked",desc:"Add the app description here.",url:"#"},
-{id:2,name:"YouTube Vanced",version:"v19.20.34",size:"85 MB",category:"apps",icon:"▶",rating:"4.7",updated:true,info:"Add feature details",desc:"Add the app description here.",url:"#"},
-{id:3,name:"Insta Pro APK",version:"v11.2",size:"70 MB",category:"apps",icon:"◎",rating:"4.6",updated:true,info:"Extra features",desc:"Add the app description here.",url:"#"},
-{id:4,name:"Rave MOD APK",version:"v7.0",size:"55 MB",category:"apps",icon:"R",rating:"4.5",updated:false,info:"App information",desc:"Add the app description here.",url:"#"},
-{id:5,name:"Sample Game",version:"v1.0",size:"150 MB",category:"games",icon:"🎮",rating:"4.9",updated:true,info:"Game details",desc:"Add the game description here.",url:"#"},
-{id:6,name:"Plus Messenger",version:"v10.2",size:"40 MB",category:"apps",icon:"+",rating:"4.6",updated:false,info:"App information",desc:"Add the app description here.",url:"#"}
+const items = [
+  {id:1,name:"Spotify App",version:"1.0.0",size:"50 MB",category:"apps",icon:"♫",rating:"4.8",updated:true,info:"Music App",desc:"Music app information.",url:"#"},
+  {id:2,name:"Video Player",version:"2.1.0",size:"40 MB",category:"apps",icon:"▶",rating:"4.7",updated:true,info:"Video App",desc:"Video player information.",url:"#"},
+  {id:3,name:"Photo Editor",version:"1.2.0",size:"35 MB",category:"apps",icon:"✿",rating:"4.6",updated:true,info:"Photo Editor",desc:"Photo editor information.",url:"#"},
+  {id:4,name:"Messenger",version:"3.0.0",size:"25 MB",category:"apps",icon:"✉",rating:"4.5",updated:false,info:"Messaging App",desc:"Messaging app information.",url:"#"},
+  {id:5,name:"Racing Game",version:"1.0.0",size:"150 MB",category:"games",icon:"🏎",rating:"4.9",updated:true,info:"Racing Game",desc:"Racing game information.",url:"#"},
+  {id:6,name:"Puzzle Game",version:"2.0.0",size:"80 MB",category:"games",icon:"🎮",rating:"4.7",updated:false,info:"Puzzle Game",desc:"Puzzle game information.",url:"#"}
 ];
-let current=items[0];
-function appCard(x){return `<article class="app" onclick="openItem(${x.id})"><div class="art"><span class="ribbon">${x.updated?"UPDATED":"NEW"}</span>${x.icon}</div><h3>${x.name}</h3><div class="meta">${x.version}</div><div class="stars">★★★★★ <span style="color:#aeb5c2">${x.rating}</span></div><div class="tiny">● ${x.category.toUpperCase()}</div><br></article>`}
-function render(){const q=document.getElementById('q').value.toLowerCase();let list=items.filter(x=>(x.name+' '+x.desc).toLowerCase().includes(q));document.getElementById('homeGrid').innerHTML=list.filter(x=>x.updated).map(appCard).join('');document.getElementById('appsGrid').innerHTML=list.filter(x=>x.category==='apps').map(appCard).join('');document.getElementById('gamesGrid').innerHTML=list.filter(x=>x.category==='games').map(appCard).join('');document.getElementById('trendIcons').innerHTML=list.slice(0,6).map(x=>`<div class="mini" onclick="openItem(${x.id})"><div class="ico">${x.icon}</div>${x.name.split(' ')[0]}</div>`).join('')}
-function show(id){document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');document.querySelectorAll('.bottom button').forEach(x=>x.classList.toggle('active',x.dataset.view===id));window.scrollTo(0,0)}
-function toggleMenu(){const m=document.getElementById('menu');m.style.display=m.style.display==='none'?'block':'none'}
-function openItem(id){current=items.find(x=>x.id===id);document.getElementById('dtitle').textContent=current.name;document.getElementById('dsub').textContent=current.version+' · '+current.size;document.getElementById('dart').textContent=current.icon;document.getElementById('dinfo').textContent=current.info;document.getElementById('ddesc').textContent=current.desc;document.getElementById('specs').innerHTML=`<h3>APP INFO</h3><div class="pair"><span>Version</span><b>${current.version}</b></div><div class="pair"><span>Size</span><b>${current.size}</b></div><div class="pair"><span>Requirements</span><b>Android (check publisher)</b></div>`;document.getElementById('dltitle').textContent=current.name+' — Download links';document.getElementById('dlurl').href=current.url;show('detail')}
-function checkUrl(e){if(!current.url||current.url==='#'){e.preventDefault();alert('First add a real authorized download URL for this app in script.js.');return false}return true}
-document.getElementById('q').addEventListener('input',render);render();
+
+let current = items[0];
+
+function appCard(x) {
+  return `
+    <article class="app" onclick="openItem(${x.id})">
+      <div class="art">
+        <span class="ribbon">${x.updated ? "UPDATED" : "NEW"}</span>
+        ${x.icon}
+      </div>
+      <h3>${x.name}</h3>
+      <div class="meta">${x.version} · ${x.size}</div>
+      <div class="stars">★★★★★ <span style="color:#aeb5c2">${x.rating}</span></div>
+      <div class="tiny">${x.category.toUpperCase()}</div><br>
+    </article>`;
+}
+
+function render() {
+  const input = document.getElementById("q");
+  const q = input ? input.value.toLowerCase() : "";
+
+  const filtered = items.filter(x =>
+    (x.name + " " + x.category).toLowerCase().includes(q)
+  );
+
+  document.getElementById("homeGrid").innerHTML =
+    filtered.filter(x => x.updated).map(appCard).join("");
+
+  document.getElementById("appsGrid").innerHTML =
+    filtered.filter(x => x.category === "apps").map(appCard).join("");
+
+  document.getElementById("gamesGrid").innerHTML =
+    filtered.filter(x => x.category === "games").map(appCard).join("");
+
+  document.getElementById("trendIcons").innerHTML =
+    filtered.slice(0, 6).map(x => `
+      <div class="mini" onclick="openItem(${x.id})">
+        <div class="ico">${x.icon}</div>
+        ${x.name}
+      </div>`).join("");
+}
+
+function show(id) {
+  document.querySelectorAll(".view").forEach(el =>
+    el.classList.remove("active")
+  );
+
+  document.getElementById(id).classList.add("active");
+
+  document.querySelectorAll(".bottom button").forEach(btn =>
+    btn.classList.toggle("active", btn.dataset.view === id)
+  );
+
+  window.scrollTo(0, 0);
+}
+
+function toggleMenu() {
+  const menu = document.getElementById("menu");
+  menu.style.display =
+    menu.style.display === "none" ? "block" : "none";
+}
+
+function openItem(id) {
+  current = items.find(x => x.id === id);
+
+  document.getElementById("dtitle").textContent = current.name;
+  document.getElementById("dsub").textContent =
+    current.version + " · " + current.size;
+  document.getElementById("dart").textContent = current.icon;
+  document.getElementById("dinfo").textContent = current.info;
+  document.getElementById("ddesc").textContent = current.desc;
+
+  document.getElementById("specs").innerHTML = `
+    <h3>APP INFO</h3>
+    <div class="pair"><span>Version</span><b>${current.version}</b></div>
+    <div class="pair"><span>Size</span><b>${current.size}</b></div>
+    <div class="pair"><span>Category</span><b>${current.category}</b></div>`;
+
+  document.getElementById("dltitle").textContent =
+    current.name + " — Download Links";
+
+  document.getElementById("dlurl").href = current.url;
+
+  show("detail");
+}
+
+function checkUrl(event) {
+  if (!current.url || current.url === "#") {
+    event.preventDefault();
+    alert("Is app ka asli download link abhi add nahi hua hai.");
+    return false;
+  }
+  return true;
+}
+
+document.getElementById("q").addEventListener("input", render);
+
+render();
