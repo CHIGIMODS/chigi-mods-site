@@ -1,6 +1,18 @@
 const items = [
   {id:1,name:"Capcut pro",version:"1.0.0",size:"273 MB",category:"apps",icon:"",rating:"4.8",updated:true,info:"Editing app",desc:"Editing app information.",url:"https://github.com/CHIGIMODS/chigi-mods-site/releases/download/V1.0.0.0/CpCutUltra2027_28.2.0_CHIGI.MODS.APK.com.apk"},
-
+{
+  id: 2,
+  name: "CapCut Ultra",
+  version: "28.2.0",
+  size: "APK",
+  category: "apps",
+  icon: "✂️",
+  rating: "4.8",
+  updated: true,
+  info: "CapCut Ultra app",
+  desc: "Download CapCut Ultra",
+  download: "https://github.com/CHIGIMODS/chigi-mods-site/releases/download/V1.0.0/CpCutUltra2027_28.2.0_CHIGI.MODS.com.apk"
+},
 
 let current = items[0];
 
